@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.use('/', seedRoutes);
+app.use('/seed', seedRoutes);
 app.use('/contacts',contactRoutes);
 
 // Connect to MongoDB, then start the server

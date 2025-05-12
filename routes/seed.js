@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getDb } = require('../db/connect');
 
-router.get('/seed', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const db = getDb();
     const contacts = db.collection('contacts');
