@@ -1,7 +1,6 @@
-import express from 'express';
-import { ObjectId } from 'mongodb';
-import db from '../db/conn.js';//connection to MongoDB
-import { param } from './seed';
+const express = require('express');
+const {ObjectId} = require('mongodb');
+const {getDb} = required('../db/connect');
 
 const router = express.Router();
 
