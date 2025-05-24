@@ -8,6 +8,7 @@ const router = express.Router();
 //get all  contacts
 router.get('/',async (req, res) => {
     try {
+        const db = getDb();
         const contacts = await db.collection('contacts').find().toArray();
         res.status(200).json(contacts);
     } catch (err) {
