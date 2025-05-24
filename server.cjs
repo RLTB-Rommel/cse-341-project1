@@ -1,23 +1,17 @@
-require('dotenv').config();
-console.log('MONGO_URI:', process.env.MONGO_URI);
 const express = require('express');
 const app = express();
 const { connectToDatabase } = require('./db/connect');
-const seedRoutes = require('./routes/seed');
-const contactRoutes = require('./routes/contacts');
+const routes = require('./routes'); // automatically loads routes/index.js
 
-require('dotenv').config(); // Load .env variables
-
+require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
 
-// Routes
-app.use('/seed', seedRoutes);
-app.use('/contacts',contactRoutes);
+// Use all routes from routes/index.js
+app.use('/', routes);
 
-// Connect to MongoDB, then start the server
 connectToDatabase()
   .then(() => {
     app.listen(PORT, () => {
