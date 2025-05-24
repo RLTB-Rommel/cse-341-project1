@@ -20,6 +20,7 @@ router.get('/',async (req, res) => {
 
 router.get('/:id', async (req,res)=>{
     try {
+        const db = getDb();
         const id = new ObjectId(req.params.id);
         const contact = await db.collection('contacts').findOne({_id:id});
 
