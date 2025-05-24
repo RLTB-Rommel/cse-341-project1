@@ -4,10 +4,10 @@ require('dotenv').config();
 let db;
 
 async function connectToDatabase() {
-  const client = new MongoClient(process.env.MONGO_URI, {
-    tls: true, // Explicitly enable TLS
-    serverApi: { version: '1', strict: true, deprecationErrors: true },
-  });
+    const client = new MongoClient(process.env.MONGO_URI, {
+      serverApi: { version: '1', strict: true, deprecationErrors: true },
+      tls: false
+    });
 
   await client.connect();
   db = client.db('cse341');
