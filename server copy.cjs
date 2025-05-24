@@ -23,7 +23,7 @@ console.log('MONGO_URI:', process.env.MONGO_URI);
 const express = require('express');
 const { connectToDatabase } = require('./db/connect');
 const seedRoutes = require('./routes/seed');
-const contactRoutes = require('./routes/contacts');
+const contactRoutes = require('./routes/contacts.cjs');
 
 require('dotenv').config(); // Load .env variables
 

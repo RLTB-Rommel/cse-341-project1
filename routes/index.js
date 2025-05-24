@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const contactRoutes = require('./contacts');
+const contactRoutes = require('./contacts.cjs');
 const seedRoutes = require('./seed');
 
 // Route forwarding
