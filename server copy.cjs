@@ -21,7 +21,6 @@ app.listen(port,()=>{console.log})
 require('dotenv').config();
 console.log('MONGO_URI:', process.env.MONGO_URI);
 const express = require('express');
-const app = express();
 const { connectToDatabase } = require('./db/connect');
 const seedRoutes = require('./routes/seed');
 const contactRoutes = require('./routes/contacts');
