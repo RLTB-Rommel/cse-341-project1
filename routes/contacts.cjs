@@ -3,6 +3,7 @@ const {ObjectId} = require('mongodb');
 const { getDb } = require('../db/connect'); 
 
 const router = express.Router();
+const db = getDb();
 
 //get all  contacts
 router.get('/',async (req, res) => {
