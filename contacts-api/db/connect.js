@@ -10,7 +10,7 @@ async function connectToDatabase() {
     });
 
   await client.connect();
-  db = client.db('cse341');
+  db = client.db();
   console.log('Connected to MongoDB');
 }
 
