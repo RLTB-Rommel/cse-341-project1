@@ -122,8 +122,9 @@ router.get('/:id', async (req, res) => {
  * @swagger
  * /contacts:
  *   post:
- *     summary: Create a new contact
- *     tags: [Contacts]
+ *     summary: Add a new contact
+ *     tags:
+ *       - Contacts
  *     requestBody:
  *       required: true
  *       content:
@@ -137,25 +138,23 @@ router.get('/:id', async (req, res) => {
  *             properties:
  *               firstName:
  *                 type: string
- *                 example: "Anna"
+ *                 example: "Juan"
  *               lastName:
  *                 type: string
- *                 example: "Smith"
+ *                 example: "Dela Cruz"
  *               email:
  *                 type: string
- *                 example: "annasmith@example.com"
+ *                 example: "juan@example.com"
  *               favoriteColor:
  *                 type: string
  *                 example: "green"
  *               birthday:
  *                 type: string
  *                 format: date
- *                 example: "1992-10-12"
+ *                 example: "1995-05-05"
  *     responses:
  *       201:
- *         description: Contact created successfully
- *       500:
- *         description: Server error
+ *         description: Contact created
  */
 router.post('/', async (req, res) => {
   try {
