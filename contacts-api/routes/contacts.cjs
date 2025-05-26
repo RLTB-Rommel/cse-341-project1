@@ -6,6 +6,61 @@ const router = express.Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Contacts
+ *   description: Contact management API
+ */
+
+/**
+ * @swagger
+ * /contacts:
+ *   get:
+ *     summary: Get all contacts
+ *     tags: [Contacts]
+ *     responses:
+ *       200:
+ *         description: List of all contacts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                     example: "683287dce167691cc75189a5"
+ *                   firstName:
+ *                     type: string
+ *                     example: "Carlo"
+ *                   lastName:
+ *                     type: string
+ *                     example: "Doe"
+ *                   email:
+ *                     type: string
+ *                     example: "carloodoe@example.com"
+ *                   favoriteColor:
+ *                     type: string
+ *                     example: "blue"
+ *                   birthday:
+ *                     type: string
+ *                     format: date
+ *                     example: "1995-04-24"
+ *       500:
+ *         description: Server error
+ */
+router.get('/', async (req, res) => {
+  try {
+    const db = getDb();
+    const contacts = await db.collection('contacts').find().toArray();
+    res.status(200).json(contacts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch contacts' });
+  }
+});
+
+/**
+ * @swagger
  * /contacts/{id}:
  *   get:
  *     summary: Get a contact by ID
