@@ -118,4 +118,149 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /contacts:
+ *   post:
+ *     summary: Create a new contact
+ *     tags: [Contacts]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - firstName
+ *               - lastName
+ *               - email
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *                 example: "Anna"
+ *               lastName:
+ *                 type: string
+ *                 example: "Smith"
+ *               email:
+ *                 type: string
+ *                 example: "annasmith@example.com"
+ *               favoriteColor:
+ *                 type: string
+ *                 example: "green"
+ *               birthday:
+ *                 type: string
+ *                 format: date
+ *                 example: "1992-10-12"
+ *     responses:
+ *       201:
+ *         description: Contact created successfully
+ *       500:
+ *         description: Server error
+ */
+router.post('/', async (req, res) => {
+  try {
+    const db = getDb();
+    const contact = req.body;
+    const result = await db.collection('contacts').insertOne(contact);
+    res.status(201).json(result);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create contact' });
+  }
+});
+
+/**
+ * @swagger
+ * /contacts/{id}:
+ *   put:
+ *     summary: Update a contact by ID
+ *     tags: [Contacts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Contact ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               favoriteColor:
+ *                 type: string
+ *               birthday:
+ *                 type: string
+ *                 format: date
+ *     responses:
+ *       200:
+ *         description: Contact updated successfully
+ *       400:
+ *         description: Invalid ID format
+ *       404:
+ *         description: Contact not found
+ */
+router.put('/:id', async (req, res) => {
+  try {
+    const db = getDb();
+    const id = new ObjectId(req.params.id);
+    const updateData = req.body;
+
+    const result = await db.collection('contacts').replaceOne({ _id: id }, updateData);
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json({ error: 'Invalid ID format' });
+  }
+});
+
+/**
+ * @swagger
+ * /contacts/{id}:
+ *   delete:
+ *     summary: Delete a contact by ID
+ *     tags: [Contacts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Contact ID
+ *     responses:
+ *       200:
+ *         description: Contact deleted successfully
+ *       400:
+ *         description: Invalid ID format
+ *       404:
+ *         description: Contact not found
+ */
+router.delete('/:id', async (req, res) => {
+  try {
+    const db = getDb();
+    const id = new ObjectId(req.params.id);
+
+    const result = await db.collection('contacts').deleteOne({ _id: id });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.status(200).json({ message: 'Contact deleted successfully' });
+  } catch (err) {
+    res.status(400).json({ error: 'Invalid ID format' });
+  }
+});
+
 module.exports = router;
