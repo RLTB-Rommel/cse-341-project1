@@ -1,0 +1,34 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Editor config
+.vscode/
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build/output
+dist/
+build/
+
+# Coverage reports
+coverage/
+
+# Swagger output (if using swagger-autogen or JSON export)
+swagger-output.json
+swagger.json
+
+# Process ID files
+*.pid
+*.pid.lock
