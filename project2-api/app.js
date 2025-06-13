@@ -37,6 +37,7 @@ app.use(passport.session());
  *   description: Endpoints related to Google OAuth login and logout
  */
 
+console.log('Swagger paths being loaded:', Object.keys(swaggerSpec.paths));
 // Swagger docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

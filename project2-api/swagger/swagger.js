@@ -28,8 +28,10 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/items.js', './routes/users.js']
+  apis: ['./routes/items.js', './routes/users.js'],
 };
+
+console.log('Loading Swagger from files:', options.apis);
 
 const swaggerSpec = swaggerJsdoc(options);
 module.exports = swaggerSpec;
