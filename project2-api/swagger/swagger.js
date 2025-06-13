@@ -10,7 +10,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'https://cse-341-project1-3.onrender.com',
       },
     ],
     components: {
