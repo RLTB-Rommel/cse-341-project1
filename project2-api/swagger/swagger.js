@@ -18,7 +18,7 @@ const options = {
         cookieAuth: {
           type: 'apiKey',
           in: 'cookie',
-          name: 'connect.sid', // default cookie name used by express-session
+          name: 'connect.sid',
         },
       },
     },
