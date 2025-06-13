@@ -12,22 +12,18 @@ const {
  * @swagger
  * tags:
  *   name: Items
- *   description: API for managing items (OAuth protected)
+ *   description: API for managing items
  */
 
 /**
  * @swagger
  * /api/items:
  *   get:
- *     summary: Get all items (OAuth protected)
+ *     summary: Get all items
  *     tags: [Items]
- *     security:
- *       - cookieAuth: []
  *     responses:
  *       200:
  *         description: List of all items
- *       401:
- *         description: Unauthorized
  */
 router.get('/', getAllItems);
 
@@ -35,10 +31,8 @@ router.get('/', getAllItems);
  * @swagger
  * /api/items/{id}:
  *   get:
- *     summary: Get a single item by ID (OAuth protected)
+ *     summary: Get a single item by ID
  *     tags: [Items]
- *     security:
- *       - cookieAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -48,8 +42,6 @@ router.get('/', getAllItems);
  *     responses:
  *       200:
  *         description: A single item
- *       401:
- *         description: Unauthorized
  *       404:
  *         description: Item not found
  */
@@ -59,10 +51,8 @@ router.get('/:id', getItemById);
  * @swagger
  * /api/items:
  *   post:
- *     summary: Create a new item (OAuth protected)
+ *     summary: Create a new item
  *     tags: [Items]
- *     security:
- *       - cookieAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -80,8 +70,6 @@ router.get('/:id', getItemById);
  *         description: Item created
  *       400:
  *         description: Invalid input
- *       401:
- *         description: Unauthorized
  */
 router.post('/', createItem);
 
@@ -89,10 +77,8 @@ router.post('/', createItem);
  * @swagger
  * /api/items/{id}:
  *   put:
- *     summary: Update an existing item (OAuth protected)
+ *     summary: Update an existing item
  *     tags: [Items]
- *     security:
- *       - cookieAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -116,8 +102,6 @@ router.post('/', createItem);
  *         description: Item updated
  *       400:
  *         description: Invalid input
- *       401:
- *         description: Unauthorized
  *       404:
  *         description: Item not found
  */
@@ -127,10 +111,8 @@ router.put('/:id', updateItem);
  * @swagger
  * /api/items/{id}:
  *   delete:
- *     summary: Delete an item (OAuth protected)
+ *     summary: Delete an item
  *     tags: [Items]
- *     security:
- *       - cookieAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -140,8 +122,6 @@ router.put('/:id', updateItem);
  *     responses:
  *       200:
  *         description: Item deleted
- *       401:
- *         description: Unauthorized
  *       404:
  *         description: Item not found
  */

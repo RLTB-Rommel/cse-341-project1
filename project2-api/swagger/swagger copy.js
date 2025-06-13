@@ -6,30 +6,31 @@ const options = {
     info: {
       title: 'Project 2 API',
       version: '1.0.0',
-      description: 'CRUD API with MongoDB and OAuth (Google) authentication using sessions',
+      description: 'CRUD API with MongoDB and JWT authentication',
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:3000', // or your Render URL after deploy
       },
     ],
     components: {
       securitySchemes: {
-        cookieAuth: {
-          type: 'apiKey',
-          in: 'cookie',
-          name: 'connect.sid', // default cookie name used by express-session
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
         },
       },
     },
     security: [
       {
-        cookieAuth: [],
+        bearerAuth: [],
       },
     ],
   },
-  apis: ['./routes/items.js', './routes/users.js']
+  apis: ['./routes/*.js'], // Path to route files for Swagger comments
 };
 
 const swaggerSpec = swaggerJsdoc(options);
+
 module.exports = swaggerSpec;

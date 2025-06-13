@@ -1,9 +1,9 @@
-const express = require('express');
+/** const express = require('express');
 const router = express.Router();
 const { register, login } = require('../controllers/authController');
 
 /**
- * @swagger
+ /*** @swagger
  * /api/auth/register:
  *   post:
  *     summary: Register a new user
@@ -26,10 +26,10 @@ const { register, login } = require('../controllers/authController');
  *       201:
  *         description: User registered
  */
-router.post('/register', register);
+/**router.post('/register', register);
 
 /**
- * @swagger
+ /*** @swagger
  * /api/auth/login:
  *   post:
  *     summary: Login a user and return a token
@@ -50,6 +50,8 @@ router.post('/register', register);
  *       200:
  *         description: Login successful
  */
-router.post('/login', login);
+/**router.post('/login', login);
 
-module.exports = router;
+/**module.exports = router;*
+
+ */

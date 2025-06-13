@@ -1,0 +1,2 @@
+MONGO_URI=mongodb+srv://rommelaunario101:quiaolang12345@cluster0.tcz09gz.mongodb.net/project2db?retryWrites=true&w=majority
+JWT_SECRET=quiolang12345secret
