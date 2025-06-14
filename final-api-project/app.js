@@ -12,6 +12,8 @@ require('./middleware/auth'); // Google OAuth strategy
 
 const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/users');
+const productRoutes = require('./routes/products');
+const reviewRoutes = require('./routes/reviews');
 
 const app = express();
 
@@ -109,6 +111,8 @@ app.get('/protected', isLoggedIn, (req, res) => {
 // Protected API routes
 app.use('/api/orders', isLoggedIn, orderRoutes);
 app.use('/api/users', isLoggedIn, userRoutes);
+app.use('/api/products', isLoggedIn, productRoutes);
+app.use('/api/reviews', isLoggedIn, reviewRoutes);
 
 // Default route
 app.get('/', (req, res) => {

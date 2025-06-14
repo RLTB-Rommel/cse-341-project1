@@ -28,7 +28,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/orders.js', './routes/users.js'],
+  apis: ['./routes/orders.js', './routes/users.js', './routes/products.js', './routes/reviews.js'],
 };
 
 console.log('Loading Swagger from files:', options.apis);
