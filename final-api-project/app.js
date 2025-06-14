@@ -10,7 +10,7 @@ const swaggerSpec = require('./swagger/swagger');
 
 require('./middleware/auth'); // Google OAuth strategy
 
-const itemRoutes = require('./routes/items');
+const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/users');
 
 const app = express();
@@ -37,7 +37,7 @@ app.use(passport.session());
  *   description: Endpoints related to Google OAuth login and logout
  */
 
-console.log('Swagger paths being loaded:', Object.keys(swaggerSpec.paths));
+//console.log('Swagger paths being loaded:', Object.keys(swaggerSpec.paths));
 // Swagger docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -107,7 +107,7 @@ app.get('/protected', isLoggedIn, (req, res) => {
 });
 
 // Protected API routes
-app.use('/api/items', isLoggedIn, itemRoutes);
+app.use('/api/orders', isLoggedIn, orderRoutes);
 app.use('/api/users', isLoggedIn, userRoutes);
 
 // Default route
